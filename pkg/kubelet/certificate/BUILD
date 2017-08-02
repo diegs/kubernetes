@@ -13,6 +13,7 @@ go_library(
     srcs = [
         "certificate_manager.go",
         "certificate_store.go",
+        "transport.go",
     ],
     tags = ["automanaged"],
     deps = [
@@ -22,8 +23,10 @@ go_library(
         "//vendor/github.com/golang/glog:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/apis/meta/v1:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/fields:go_default_library",
+        "//vendor/k8s.io/apimachinery/pkg/util/net:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/util/wait:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/watch:go_default_library",
+        "//vendor/k8s.io/client-go/rest:go_default_library",
         "//vendor/k8s.io/client-go/util/cert:go_default_library",
     ],
 )
@@ -33,6 +36,7 @@ go_test(
     srcs = [
         "certificate_manager_test.go",
         "certificate_store_test.go",
+        "transport_test.go",
     ],
     library = ":go_default_library",
     tags = ["automanaged"],
@@ -40,7 +44,11 @@ go_test(
         "//pkg/apis/certificates/v1beta1:go_default_library",
         "//pkg/client/clientset_generated/clientset/typed/certificates/v1beta1:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/apis/meta/v1:go_default_library",
+        "//vendor/k8s.io/apimachinery/pkg/runtime:go_default_library",
+        "//vendor/k8s.io/apimachinery/pkg/runtime/serializer:go_default_library",
         "//vendor/k8s.io/apimachinery/pkg/watch:go_default_library",
+        "//vendor/k8s.io/client-go/kubernetes/typed/certificates/v1beta1:go_default_library",
+        "//vendor/k8s.io/client-go/rest:go_default_library",
         "//vendor/k8s.io/client-go/util/cert:go_default_library",
     ],
 )
